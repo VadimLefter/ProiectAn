@@ -1,14 +1,22 @@
 [
   {
-    "name": "Bauturi racoritoare"
+    "name": "Bauturi racoritoare",
+    "compartimentProducts": []
   },
   {
-    "name": "Bucate reci"
+    "name": "Bucate reci",
+    "compartimentProducts": []
   },
   {
-    "name": "Micul dejun"
+    "name": "Micul dejun",
+    "compartimentProducts": []
   },
   {
-    "name": "Bauturi fierbinti"
+    "name": "Bauturi fierbinti",
+    "compartimentProducts": []
+  },
+  {
+    "name": "test",
+    "compartimentProducts": []
   }
 ]

@@ -3,7 +3,7 @@ package tmps;
 import java.util.ArrayList;
 
 public class Menu extends WorkingWithFiles{
-  private ArrayList<Compartiment> compartimentList;
+  private ArrayList<Compartiment> compartimentList = new ArrayList<Compartiment>();
 
   public ArrayList<Compartiment> getCompartimentList(){
     return this.compartimentList;
@@ -57,7 +57,7 @@ public class Menu extends WorkingWithFiles{
     System.out.println("");
 
     for (int i = 0; i < compartimentList.get(indexCompartiment).getProducts().size(); i++) {
-      System.out.println(i + ". " + compartimentList.get(i).getName() + " -> ");
+      System.out.println(i + ". " + compartimentList.get(indexCompartiment).getProducts().get(i).getTitlu() + " -> ");
     }
 
     System.out.println("");

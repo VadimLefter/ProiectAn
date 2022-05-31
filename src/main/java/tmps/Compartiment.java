@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Compartiment{
   private String name;
-  private ArrayList<Product> compartimentProducts;
+  private ArrayList<Product> compartimentProducts = new ArrayList<Product>();
 
   public Compartiment(String name) {
     this.name = name;

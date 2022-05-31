@@ -2,10 +2,8 @@ package tmps;
 
 import java.util.Scanner;
 
-public class Main
-{
-  public static void main(String[] args)
-  {
+public class Main {
+  public static void main(String[] args) {
     Scanner myObj = new Scanner(System.in);
     Menu menu = new Menu();
 
@@ -13,15 +11,14 @@ public class Main
     String command;
     menu.ReloadedMenu();
 
-    while(isExit)
-    {
+    while (isExit) {
       command = myObj.nextLine();
       if (command.contains("exit"))
         isExit = false;//exit app
       else if (command.contains("add"))
-        CreateProductOrCompartiment(command,menu);
+        CreateProductOrCompartiment(command, menu);
       else if (command.contains("remove"))
-        RemoveProductOrCompartiment(command,menu);
+        RemoveProductOrCompartiment(command, menu);
       else if (isNumeric(command))
         menu.ShowSubMenu(Integer.parseInt(command));
       else
@@ -29,69 +26,61 @@ public class Main
     }
   }
 
-  static void CreateProductOrCompartiment(String string, Menu menu)
-  {
-    Scanner myObj2 = new Scanner(System.in);
-    if (string.contains("Compartiment"))
-    {
-      System.out.println("Title: ");
-      String title = myObj2.nextLine();
-      menu.AddCompartiment(title);
+  static void CreateProductOrCompartiment(String string, Menu menu) {
+
+    if (string.contains("Compartiment")) {
+
+      String titlu = InputString("Inserati titlul compartimentului: ");
+      menu.AddCompartiment(titlu);
       menu.ShowMainMenu();
-    }
-    else if (string.contains("Product"))
-    {
-      System.out.println("Inserati indexul compartimentului: ");
-      int index = Integer.parseInt(myObj2.next());
+    } else if (string.contains("Product")) {
 
-      System.out.println("Inserati titlul produsului: ");
-      String titlu = myObj2.nextLine();
+      int index = InputInt("Inserati indexul compartimentului: ");
+      String titlu = InputString("Inserati titlul produsului: ");
+      String descriere = InputString("Inserati descrierea produsului: ");
+      int grame = InputInt("Inserati gramele produsului: ");
+      int pret = InputInt("Inserati pretul produsului: ");
 
-      System.out.println("Inserati gramele produsului: ");
-      int grame = myObj2.nextInt();
-
-      System.out.println("Inserati descrierea produsului: ");
-      String descriere = myObj2.nextLine();
-
-      System.out.println("Inserati pretul produsului: ");
-      int pret = myObj2.nextInt();
-
-      menu.AddProduct(index,titlu,descriere,grame,pret);
+      menu.AddProduct(index, titlu, descriere, grame, pret);
       menu.ShowMainMenu();
-    }
-    else
-    {
+    } else {
       System.out.println("Incerceti 'add'+(Compartiment sau Product)");
     }
   }
 
-  static void RemoveProductOrCompartiment(String string, Menu menu)
-  {
-    Scanner myObj2 = new Scanner(System.in);
-    if (string.contains("Compartiment"))
-    {
-      System.out.println("Inserati indexul compartimentului: ");
-      int indexCompartiment = Integer.parseInt(myObj2.next());
+  static void RemoveProductOrCompartiment(String string, Menu menu) {
+
+    if (string.contains("Compartiment")) {
+
+      int indexCompartiment = InputInt("Inserati indexul compartimentului: ");
+
       menu.RemoveCompartiment(indexCompartiment);
       menu.ShowMainMenu();
-    }
-    else if (string.contains("Product"))
-    {
-      System.out.println("Inserati indexul compartimentului: ");
-      int indexCompartiment = Integer.parseInt(myObj2.next());
-      System.out.println("Inserati indexul produsului: ");
-      int indexProduct = Integer.parseInt(myObj2.next());
+    } else if (string.contains("Product")) {
 
-      menu.RemoveProduct(indexCompartiment,indexProduct);
+      int indexCompartiment = InputInt("Inserati indexul compartimentului: ");
+      int indexProduct = InputInt("Inserati indexul produsului: ");
+
+      menu.RemoveProduct(indexCompartiment, indexProduct);
       menu.ShowMainMenu();
-    }
-    else
-    {
+    } else {
       System.out.println("Incerceti 'remove'+(Compartiment sau Product)");
     }
   }
 
   public static boolean isNumeric(String str) {
     return str != null && str.matches("[-+]?\\d*\\.?\\d+");
+  }
+
+  public static String InputString(String string) {
+    Scanner myObj2 = new Scanner(System.in);
+    System.out.println(string);
+    return myObj2.nextLine();
+  }
+
+  public static int InputInt(String string) {
+    Scanner myObj2 = new Scanner(System.in);
+    System.out.println(string);
+    return myObj2.nextInt();
   }
 }
