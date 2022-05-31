@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Bauturi racoritoare"
+  },
+  {
+    "name": "Bucate reci"
+  },
+  {
+    "name": "Micul dejun"
+  },
+  {
+    "name": "Bauturi fierbinti"
+  }
+]
