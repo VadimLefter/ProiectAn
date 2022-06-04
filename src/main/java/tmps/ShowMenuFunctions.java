@@ -36,6 +36,7 @@ public class ShowMenuFunctions {
     }
 
     System.out.println("");
+    System.out.println("(back - inapoi || main - meniul principal)");
     System.out.println("Alegeti inserand numarul potrivit: ");
   }
 

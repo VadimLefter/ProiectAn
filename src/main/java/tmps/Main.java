@@ -4,25 +4,35 @@ import java.util.Scanner;
 
 public class Main {
   public static void main(String[] args) {
-    Scanner myObj = new Scanner(System.in);
-    Menu menu = new Menu();
 
+    Menu menu = new Menu();
+    ClientBascket bascket = new ClientBascket();
     boolean isExit = true;
+    boolean isCompartiment = false;
     String command;
+
     menu.ReloadedMenu();
 
     while (isExit) {
-      command = myObj.nextLine();
+      command = InputString();
+
       if (command.contains("exit"))
         isExit = false;//exit app
       else if (command.contains("add"))
         CreateProductOrCompartiment(command, menu);
       else if (command.contains("remove"))
         RemoveProductOrCompartiment(command, menu);
-      else if (isNumeric(command))
+      else if (isNumeric(command) && !isCompartiment){
         menu.ShowSubMenu(Integer.parseInt(command));
-      else
+        isCompartiment = true;
+      }
+      else if (
+          (command.contains("back") && isCompartiment) ||
+          command.contains("main")
+      ){
         menu.ShowMainMenu();
+        isCompartiment = false;
+      }
     }
   }
 
@@ -33,6 +43,7 @@ public class Main {
       String titlu = InputString("Inserati titlul compartimentului: ");
       menu.AddCompartiment(titlu);
       menu.ShowMainMenu();
+
     } else if (string.contains("Product")) {
 
       int index = InputInt("Inserati indexul compartimentului: ");
@@ -43,6 +54,7 @@ public class Main {
 
       menu.AddProduct(index, titlu, descriere, grame, pret);
       menu.ShowMainMenu();
+
     } else {
       System.out.println("Incerceti 'add'+(Compartiment sau Product)");
     }
@@ -56,6 +68,7 @@ public class Main {
 
       menu.RemoveCompartiment(indexCompartiment);
       menu.ShowMainMenu();
+
     } else if (string.contains("Product")) {
 
       int indexCompartiment = InputInt("Inserati indexul compartimentului: ");
@@ -63,6 +76,7 @@ public class Main {
 
       menu.RemoveProduct(indexCompartiment, indexProduct);
       menu.ShowMainMenu();
+
     } else {
       System.out.println("Incerceti 'remove'+(Compartiment sau Product)");
     }
@@ -73,14 +87,19 @@ public class Main {
   }
 
   public static String InputString(String string) {
-    Scanner myObj2 = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in);
     System.out.println(string);
-    return myObj2.nextLine();
+    return scanner.nextLine();
+  }
+
+  public static String InputString() {
+    Scanner scanner = new Scanner(System.in);
+    return scanner.nextLine();
   }
 
   public static int InputInt(String string) {
-    Scanner myObj2 = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in);
     System.out.println(string);
-    return myObj2.nextInt();
+    return scanner.nextInt();
   }
 }

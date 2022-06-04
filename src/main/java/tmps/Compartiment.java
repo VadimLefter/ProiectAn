@@ -18,10 +18,6 @@ public class Compartiment{
     return this.compartimentProducts;
   }
 
-  public void setName(String name) {
-    this.name = name;
-  }
-
   public void AddProduct(String titlu, String descriere, int grame, int pret){
     this.compartimentProducts.add(new Product(titlu, descriere, grame, pret));
   }
@@ -34,7 +30,4 @@ public class Compartiment{
     return this;
   }
 
-  //public void removeProductFromName(String name){
-    //compartimentProducts.remove();
-  //}
 }

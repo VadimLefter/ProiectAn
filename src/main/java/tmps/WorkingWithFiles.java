@@ -14,9 +14,9 @@ public class WorkingWithFiles {
   private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
   private Path fileName = Path.of("C:\\Users\\ionio\\Desktop\\ProiectAnTMPS\\src\\main\\java\\tmps\\menu.txt");
 
-  public Object ReloadMenu(ArrayList<Compartiment> compartimentList) {
+  public Object ReloadMenu() {
     try {
-      return compartimentList = gson.fromJson(Files.readString(fileName), new TypeToken<ArrayList<Compartiment>>(){}.getType());
+      return gson.fromJson(Files.readString(fileName), new TypeToken<ArrayList<Compartiment>>(){}.getType());
     } catch (IOException e) {
       e.printStackTrace();
       return null;
@@ -30,6 +30,5 @@ public class WorkingWithFiles {
     } catch (IOException e) {
       e.printStackTrace();
     }
-    ReloadMenu(compartimentList);
   }
 }

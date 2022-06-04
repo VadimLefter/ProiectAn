@@ -13,23 +13,6 @@ public class Product {
     this.titlu = titlu;
   }
 
-
-  public void setTitlu(String titlu) {
-    this.titlu = titlu;
-  }
-
-  public void setDescriere(String descriere) {
-    this.descriere = descriere;
-  }
-
-  public void setGrame(int grame) {
-    this.grame = grame;
-  }
-
-  public void setPret(int pret) {
-    this.pret = pret;
-  }
-
   public String getTitlu() {
     return titlu;
   }

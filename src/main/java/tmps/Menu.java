@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Menu extends WorkingWithFiles {
   private ArrayList<Compartiment> compartimentList = new ArrayList<Compartiment>();
 
-  //Composite
   private ShowMenuFunctions showMenuFunctions = new ShowMenuFunctions();
 
   public ArrayList<Compartiment> getCompartimentList() {
@@ -38,7 +37,7 @@ public class Menu extends WorkingWithFiles {
   }
 
   public void ReloadedMenu() {
-    this.compartimentList = (ArrayList<Compartiment>) super.ReloadMenu(this.compartimentList);
+    this.compartimentList = (ArrayList<Compartiment>) super.ReloadMenu();
   }
 
   public void ShowMainMenu() {
