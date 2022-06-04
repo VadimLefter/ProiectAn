@@ -22,6 +22,10 @@ public class Compartiment{
     this.compartimentProducts.add(new Product(titlu, descriere, grame, pret));
   }
 
+  public void AddClonedProduct(Product product){
+    this.compartimentProducts.add(product);
+  }
+
   public void RemoveProduct(int index){
     this.compartimentProducts.remove(index);
   }

@@ -3,6 +3,7 @@ package tmps;
 import java.util.ArrayList;
 
 public class ShowMenuFunctions {
+  private int forPurchase = 0;
 
   public void ShowMainMenu(ArrayList<Compartiment> compartimentList) {
     EmptyLines();
@@ -44,7 +45,7 @@ public class ShowMenuFunctions {
   }
 
   public void ShowBasket(ClientBascket bascket, ArrayList<Compartiment> compartimentList) {
-
+    forPurchase = 0;
     Compartiment compartiment;
     Product product;
     EmptyLines();
@@ -70,8 +71,11 @@ public class ShowMenuFunctions {
                 "\n|--|--|Pret: " +
                 product.getPret() +
                 " mdl");
+        forPurchase += product.getPret();
       }
     }
+    System.out.println("");
+    System.out.println("Total spre achitare: " + forPurchase + " mdl");
     System.out.println("");
   }
 

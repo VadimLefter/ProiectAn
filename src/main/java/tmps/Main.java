@@ -6,6 +6,7 @@ public class Main {
   public static void main(String[] args) {
 
     Menu menu = new Menu();
+    MenuMemento menuMemento;
     ClientBascket bascket = new ClientBascket();
     int thisCompartiment = 0;
     boolean isExit = true;
@@ -15,36 +16,59 @@ public class Main {
     menu.ReloadedMenu();
     menu.ShowMainMenu();
 
+    menuMemento = new MenuMemento(menu.getMenuForSave());
+
     while (isExit) {
       command = InputString();
 
-      if (command.contains("exit"))
-        isExit = false;//exit app
+      if (command.contains("exit")) isExit = false;//exit app
+
       else if (command.contains("add")) {
+
         CreateProductOrCompartiment(command, menu);
         isCompartiment = false;
-      }
-      else if (command.contains("remove")){
+
+      } else if (command.contains("restoreBackup")) {
+
+        menu.loadBackup(menuMemento);
+
+      } else if (command.contains("backup")) {
+
+        menuMemento = new MenuMemento(menu.getMenuForSave());
+
+      } else if (command.contains("cloneProduct")) {
+
+        CloneProduct(menu);
+        isCompartiment = false;
+
+      } else if (command.contains("remove")) {
+
         RemoveProductOrCompartiment(command, menu);
         isCompartiment = false;
-      }
-      else if (isNumeric(command) && !isCompartiment) {
+
+      } else if (isNumeric(command) && !isCompartiment) {
+
         menu.ShowSubMenu(Integer.parseInt(command));
         thisCompartiment = Integer.parseInt(command);
         isCompartiment = true;
+
       } else if (isNumeric(command) && isCompartiment) {
+
         bascket.addProductBasket(thisCompartiment, Integer.parseInt(command));
-        System.out.println("Comanda " +
-            menu.getCompartimentList().get(thisCompartiment).getProducts().get(Integer.parseInt(command)).getTitlu() +
-            " este adaugat in cos");
-      } else if (
-          (command.contains("back") && isCompartiment) ||
-              command.contains("main")
-      ) {
+        System.out.println("Comanda " + menu.getCompartimentList().
+            get(thisCompartiment).getProducts().
+            get(Integer.parseInt(command)).
+            getTitlu() + " este adaugat in cos");
+
+      } else if ((command.contains("back") && isCompartiment) || command.contains("main")) {
+
         menu.ShowMainMenu();
         isCompartiment = false;
+
       } else if (command.contains("basket")) {
+
         menu.ShowBasket(bascket);
+
       }
     }
   }
@@ -93,6 +117,14 @@ public class Main {
     } else {
       System.out.println("Incerceti 'remove'+(Compartiment sau Product)");
     }
+  }
+
+  public static void CloneProduct(Menu menu) {
+    int indexCompartiment = InputInt("Inserati indexul compartimentului: ");
+    int indexProduct = InputInt("Inserati indexul produsului: ");
+
+    menu.AddClonedProduct(indexCompartiment, indexProduct);
+    menu.ShowMainMenu();
   }
 
   public static boolean isNumeric(String str) {
