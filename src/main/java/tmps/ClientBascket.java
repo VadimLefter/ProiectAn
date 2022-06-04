@@ -1,13 +1,29 @@
 package tmps;
 
-public class ClientBascket {
-  private int[][] clientProducts;
+import java.util.ArrayList;
 
-  public int[][] getClientProducts(){
-    return this.clientProducts;
+public class ClientBascket {
+  private ArrayList<CompartimentBasket> clientProducts = new ArrayList<CompartimentBasket>();
+  private boolean isExistCompartiment = false;
+
+  public void addProductBasket(int indexCompartiment, int indexProduct) {
+
+    for (CompartimentBasket compartimentBasket : clientProducts) {
+      if (compartimentBasket.getIndexComaprtiment() == indexCompartiment)
+        isExistCompartiment = true;
+    }
+
+    if (isExistCompartiment) {
+      this.clientProducts.get(indexCompartiment).addIndexProduct(indexProduct);
+    } else {
+      CompartimentBasket compartimentBasket = new CompartimentBasket(indexCompartiment);
+      compartimentBasket.addIndexProduct(indexProduct);
+      this.clientProducts.add(compartimentBasket);
+    }
+    isExistCompartiment = false;
   }
 
-  public void addProductBasket(int indexCompartiment, int indexProduct){
-    clientProducts[indexCompartiment][indexProduct] = indexProduct;
+  public ArrayList<CompartimentBasket> getClientProducts() {
+    return clientProducts;
   }
 }

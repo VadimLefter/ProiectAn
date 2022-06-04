@@ -1,7 +1,14 @@
 [
   {
     "name": "Bauturi racoritoare",
-    "compartimentProducts": []
+    "compartimentProducts": [
+      {
+        "titlu": "Coca cola 0.25",
+        "descriere": "250 ml",
+        "grame": 250,
+        "pret": 20
+      }
+    ]
   },
   {
     "name": "Bucate reci",

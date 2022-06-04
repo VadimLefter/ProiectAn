@@ -1,6 +1,7 @@
 package tmps;
 
 import java.util.ArrayList;
+
 //menu vip decorator
 public class Menu extends WorkingWithFiles {
   private ArrayList<Compartiment> compartimentList = new ArrayList<Compartiment>();
@@ -46,5 +47,9 @@ public class Menu extends WorkingWithFiles {
 
   public void ShowSubMenu(int indexCompartiment) {
     showMenuFunctions.ShowSubMenu(indexCompartiment, this.compartimentList);
+  }
+
+  public void ShowBasket(ClientBascket bascket) {
+    showMenuFunctions.ShowBasket(bascket, this.compartimentList);
   }
 }

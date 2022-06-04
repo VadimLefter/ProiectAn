@@ -7,6 +7,7 @@ public class Main {
 
     Menu menu = new Menu();
     ClientBascket bascket = new ClientBascket();
+    int thisCompartiment = 0;
     boolean isExit = true;
     boolean isCompartiment = false;
     String command;
@@ -22,16 +23,23 @@ public class Main {
         CreateProductOrCompartiment(command, menu);
       else if (command.contains("remove"))
         RemoveProductOrCompartiment(command, menu);
-      else if (isNumeric(command) && !isCompartiment){
+      else if (isNumeric(command) && !isCompartiment) {
         menu.ShowSubMenu(Integer.parseInt(command));
+        thisCompartiment = Integer.parseInt(command);
         isCompartiment = true;
-      }
-      else if (
+      } else if (isNumeric(command) && isCompartiment) {
+        bascket.addProductBasket(thisCompartiment, Integer.parseInt(command));
+        System.out.println("Comanda " +
+            menu.getCompartimentList().get(thisCompartiment).getProducts().get(Integer.parseInt(command)).getTitlu() +
+            " este adaugat in cos");
+      } else if (
           (command.contains("back") && isCompartiment) ||
-          command.contains("main")
-      ){
+              command.contains("main")
+      ) {
         menu.ShowMainMenu();
         isCompartiment = false;
+      } else if (command.contains("basket")) {
+        menu.ShowBasket(bascket);
       }
     }
   }
