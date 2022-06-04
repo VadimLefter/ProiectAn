@@ -13,16 +13,21 @@ public class Main {
     String command;
 
     menu.ReloadedMenu();
+    menu.ShowMainMenu();
 
     while (isExit) {
       command = InputString();
 
       if (command.contains("exit"))
         isExit = false;//exit app
-      else if (command.contains("add"))
+      else if (command.contains("add")) {
         CreateProductOrCompartiment(command, menu);
-      else if (command.contains("remove"))
+        isCompartiment = false;
+      }
+      else if (command.contains("remove")){
         RemoveProductOrCompartiment(command, menu);
+        isCompartiment = false;
+      }
       else if (isNumeric(command) && !isCompartiment) {
         menu.ShowSubMenu(Integer.parseInt(command));
         thisCompartiment = Integer.parseInt(command);

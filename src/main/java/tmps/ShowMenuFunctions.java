@@ -33,7 +33,7 @@ public class ShowMenuFunctions {
           " mdl" +
           "\n|--|Cantitate: " +
           compartiment.getProducts().get(i).getGrame() +
-          " g/ml" +
+          " g||ml" +
           "\n|--|Descriere: " +
           compartiment.getProducts().get(i).getDescriere());
     }
