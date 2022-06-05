@@ -45,6 +45,8 @@ public class Menu extends WorkingWithFiles implements MenuBuilder {
   @Override
   public void RemoveCompartiment(int index) {
     this.compartimentList.remove(index);
+    SaveMenu(this.compartimentList);
+    ReloadedMenu();
   }
 
   @Override

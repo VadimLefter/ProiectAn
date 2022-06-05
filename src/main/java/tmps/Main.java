@@ -31,10 +31,12 @@ public class Main {
       } else if (command.contains("restoreBackup")) {
 
         menu.loadBackup(menuMemento);
+        System.out.println("Backup is restored");
 
       } else if (command.contains("backup")) {
 
         menuMemento = new MenuMemento(menu.getMenuForSave());
+        System.out.println("Backup is make");
 
       } else if (command.contains("cloneProduct")) {
 
