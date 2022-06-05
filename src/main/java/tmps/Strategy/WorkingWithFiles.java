@@ -5,7 +5,7 @@ import tmps.Compartiment;
 import java.util.ArrayList;
 
 public class WorkingWithFiles {
-  private Context context;
+  private Context context = new Context();
 
   public Object ReloadMenu() {
     context.setStrategy(new ReloadMenu());
