@@ -1,7 +1,9 @@
 package tmps;
 
-import java.util.ArrayList;
+import tmps.Strategy.WorkingWithFiles;
 
+import java.util.ArrayList;
+//Composite
 public class Menu extends WorkingWithFiles implements MenuBuilder {
   private ArrayList<Compartiment> compartimentList = new ArrayList<Compartiment>();
 
